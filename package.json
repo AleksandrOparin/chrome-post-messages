@@ -1,0 +1,42 @@
+{
+    "type": "module",
+    "name": "chrome-message-helper",
+    "version": "1.0.0",
+    "description": "A Chrome extension messaging helper for managing connections and communication.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "clean": "rimraf dist",
+        "build": "npm run clean && tsc",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "prepublishOnly": "npm run build"
+    },
+    "files": [
+        "dist/",
+        "README.md"
+    ],
+    "keywords": [
+        "chrome",
+        "extension",
+        "post messages",
+        "communication",
+        "runtime",
+        "port"
+    ],
+    "author": "Aleksandr",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/chrome": "^0.0.297",
+        "@typescript-eslint/eslint-plugin": "^8.21.0",
+        "@typescript-eslint/parser": "^8.21.0",
+        "eslint": "^9.18.0",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-prettier": "^5.2.3",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "prettier": "^3.4.2",
+        "rimraf": "^6.0.1",
+        "typescript": "^5.7.3"
+    }
+}
