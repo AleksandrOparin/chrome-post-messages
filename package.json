@@ -1,8 +1,7 @@
 {
-    "type": "module",
-    "name": "chrome-message-helper",
+    "name": "chrome-post-messages",
     "version": "1.0.0",
-    "description": "A Chrome extension messaging helper for managing connections and communication.",
+    "description": "A Chrome extension for post messaging with connections and communication management.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
