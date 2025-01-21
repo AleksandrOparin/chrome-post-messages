@@ -96,9 +96,78 @@ devtoolsManager.sendMessage({
 
 ### With better typing
 
-Also you can create your own classes and add better typing for post messages like that:
+Also, you can create your own classes with:
+
+- Better typing for post messages.
+- Some extra logic.
+
+Example for strong typing in classes:
+
 ```ts
-//TODO
+/**
+ * types.ts
+ */
+enum MessageType {
+    MESSAGE = 'message',
+}
+
+export interface MessageMap {
+    [MessageType.MESSAGE]: { text: string };
+}
+
+export interface Message<T extends keyof MessageMap = keyof MessageMap> {
+    type: T;
+    data: MessageMap[T];
+}
+
+export interface MessageListener<T extends MessageType = MessageType> {
+    (message: Message<T>, senderPort: chrome.runtime.Port): boolean | void | undefined;
+}
+
+/**
+ * backgroundManager.ts
+ */
+class BackgroundManager extends BaseBackgroundManager {
+    constructor() {
+        super(logger);
+    }
+    
+    public subscribeTyped<T extends MessageType>(
+        type: T,
+        listener: MessageListener<T>,
+    ): () => void {
+        return this.subscribe(type, listener);
+    }
+    
+    public sendMessageTyped<T extends MessageType>(
+        options: Partial<ConnectionOptions>,
+        message: Message<T>,
+    ): void {
+        this.sendMessage(options, message);
+    }
+}
+
+export default new BackgroundManager();
+
+/**
+ * clientManager.ts
+ */
+export abstract class ClientManager extends BaseClientManager {
+    protected constructor(layer: ClientLayer) {
+        super(layer, logger);
+    }
+    
+    public subscribeTyped<T extends MessageType>(
+        type: T,
+        listener: MessageListener<T>,
+    ): () => void {
+        return this.subscribe(type, listener);
+    }
+    
+    public sendMessageTyped<T extends MessageType>(message: Message<T>): void {
+        this.sendMessage(message);
+    }
+}
 ```
 
 ### Subscribing and Sending Messages
