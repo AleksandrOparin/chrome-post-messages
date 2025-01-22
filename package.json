@@ -6,7 +6,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "clean": "rimraf dist",
-        "build": "npm run clean && tsc",
+        "build": "npm run clean && tsc && tsc-alias",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
@@ -36,6 +36,7 @@
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "prettier": "^3.4.2",
         "rimraf": "^6.0.1",
+        "tsc-alias": "^1.8.10",
         "typescript": "^5.7.3"
     }
 }
