@@ -52,7 +52,7 @@ Or, if you prefer Yarn:
 In your extension's **background** script (often `background.js` or `background.ts`):
 
 ```ts
-import { BaseBackgroundManager } from 'your-package-name';
+import { BaseBackgroundManager } from 'chrome-post-messages';
 import { myLogger } from './myLogger'; // Your custom logger
 
 const bgManager = new BaseBackgroundManager(myLogger);
@@ -74,8 +74,8 @@ bgManager.subscribe('USER_LOGGED_IN', (message) => {
 In DevTools, Popup, or Options scripts, use the BaseClientManager to manage the port connection:
 
 ```ts
-import { BaseClientManager } from 'your-package-name';
-import { ClientLayer } from 'your-package-name';
+import { BaseClientManager } from 'chrome-post-messages';
+import { ClientLayer } from 'chrome-post-messages';
 import { myLogger } from './myLogger'; // Your custom logger
 
 const devtoolsManager = new BaseClientManager(ClientLayer.DevTools, myLogger);
@@ -255,7 +255,7 @@ export const myLogger: Logger = {
 
 👨‍💻 **Contributions are welcome!**
 
-1. [Fork](https://github.com/your-repo/your-package/fork) this repository.  
+1. [Fork](https://github.com/AleksandrOparin/chrome-post-messages) this repository.  
 2. Create a new branch for your feature/fix:
 ```bash
   git checkout -b feature/my-feature
