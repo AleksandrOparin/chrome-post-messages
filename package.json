@@ -1,6 +1,6 @@
 {
     "name": "chrome-post-messages",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A Chrome extension for post messaging with connections and communication management.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
